@@ -14,14 +14,14 @@ const Navbar = () => {
             <div className="navbar1 flex md:mx-0 flex-row md:w-[390px] items-center lg:w-60">
                 <div className="logo flex flex-row w-[100vw] justify-evenly md:justify-center md:w-[390px]  md:gap-4 mx-3 items-center h-16 lg:w-40  ">
                     <IoMenu className="h-10 w-10 lg:w-10 md:block lg:hidden text-white md:mx-0.5" />
-                    <a href='www.amazon.com'><img className='h-13 pt-3 ml-5 md:m-0 rounded-md border border-transparent hover:border-white transition' src='src\assets\Images\White-Amazon-Logo-PNG-HD-Quality.png'></img></a>
+                    <a href='www.amazon.com'><img className='h-13 pt-3 ml-5 md:m-0 rounded-md border border-transparent hover:border-white transition' src='/assets/Images/White-Amazon-Logo-PNG-HD-Quality.png'></img></a>
                     <span className="flex flex-row items-center md:block md:flex-row lg:hidden ">Sign in <span className="flex"><SlArrowRight className="h-3 w-3" /> <FaUser className="h-3 w-3" /></span></span>
                     <div className="flex" ><SlBasket className="h-6 lg:w-6 md:block lg:hidden text-white cursor-pointer" />
                     <span className='text-[1rem] md:block lg:hidden font-bold h-auto '>Cart</span> </div>
                 </div>
 
                 <div className='delivery text-white lg:flex flex-row h-16 w-22 rounded-md border border-transparent hover:border-white transition hidden items-center'>
-                    <img src='src\assets\Images\map.png' className='h-5 hidden lg:block' />
+                    <img src='/assets/Images/map.png' className='h-5 hidden lg:block' />
                     <div id="address" className='flex flex-col justify-center'>
                         <span className='text-[0.7rem] h-auto hidden lg:block'>Deliver to</span>
                         <span className='text-[1rem] font-bold h-auto hidden lg:block'>India</span>
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </div>
             </div>
                 <div className="language hidden lg:flex flex-row  h-16 w-22 items-center justify-center rounded-md border border-transparent hover:border-white transition gap-1" >
-                    <img src='src\assets\Images\7053.jpg' className='hidden lg:block h-6' />
+                    <img src='/assets/Images/7053.jpg' className='hidden lg:block h-6' />
                     <span className=" text-[1rem] hidden lg:block font-bold ">HI</span>
                     <SlArrowDown className="h-4 w-4 hidden lg:block text-white cursor-pointer" />
                 </div>
@@ -60,14 +60,14 @@ const Navbar = () => {
                 </div>
         </nav>
         <div className="deliver w-full h-10 bg-[#121821] text-white lg:hidden flex justify-center gap-5 items-center">
-            <img src='src\assets\Images\map.png' className='h-5' /> <p>Deliver to India ....  </p>
+            <img src='/assets/Images/map.png' className='h-5' /> <p>Deliver to India ....  </p>
         </div>
 
         <div className="more bg-[#0a112edf] w-full h-12 flex justify-start md:justify-evenly ">
             <ul className="flex justify-start items-center md:justify-evenly gap-6 lg:gap-12 p-3">
-                <li><a href="#" className="text-white rounded-md border border-transparent hover:border-white transition h-10 lg:text-[1rem]  lg:flex font-semibold flex-row hidden text-[0.7rem] items-center cursor-pointer hover:underline"><IoMenu className="h-8 w-8 text-white" /><p>All</p></a></li>
+                <li><a href="#" className="text-white rounded-md border border-transparent hover:border-white transition h-10 lg:text-[1rem]  lg:flex font-semibold flex-row hidden text-[0.7rem] items-center cursor-pointer "><IoMenu className="h-8 w-8 text-white" /><p>All</p></a></li>
                 {info.map((item) => (
-                    <li key={item.id} className="text-white font-semibold lg:text-[1rem] text-[0.7rem] cursor-pointer rounded-md border border-transparent hover:border-white transition"><a href={item.link}>{item.title}</a></li>
+                    <li key={item.id} className="text-white h-11 flex justify-center items-center font-semibold lg:text-[1rem] text-[0.7rem] cursor-pointer rounded-md border border-transparent hover:border-white transition"><a href={item.link}>{item.title}</a></li>
                 ))}
             </ul>
         </div>

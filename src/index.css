@@ -1,9 +1,45 @@
 @import url('https://fonts.cdnfonts.com/css/amazon-ember');
 @import "tailwindcss";
 
-
 *{
     box-sizing: border-box;
     font-family: 'Amazon Ember', sans-serif;
-    overflow: hidden;
+    scrollbar-width: none;
+}
+
+/* Custom scrollbar hiding */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Enhanced responsive design for hero section */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+    
+    .hero img {
+        height: 50vh;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 480px) {
+    .laptop-sections .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .laptop-section {
+        padding: 1rem;
+    }
+    
+    .laptop-section h3 {
+        font-size: 1rem;
+    }
 }
