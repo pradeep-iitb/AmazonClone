@@ -5,9 +5,13 @@ import { IoMenu } from "react-icons/io5";
 import { SlArrowRight } from "react-icons/sl";
 import { FaUser } from "react-icons/fa";
 import info from "../constants/index.js";
+import { categories } from "../constants/index.js";
+import { useState } from "react";
 
 
 const Navbar = () => {
+    const [showCategories, setShowCategories] = useState(false);
+
     return (
         <>
         <nav className='navbar bg-[#121821] lg:h-18 w-[100vw] text-white flex flex-col lg:flex-row md:flex-row justify-between items-center'>
@@ -31,8 +35,19 @@ const Navbar = () => {
 
             <div className="navbar2">
                 <div className="searchbar flex flex-row items-center h-18 md:mr-5 m-auto lg:m-0">
-                    <div className="navleft flex flex-row items-center justify-center text-black bg-[#e7e6e7] h-10 w-16 gap-3 rounded-l-md">
-                        <span className="opacity-90 ">All</span>
+                    <div onClick={() => setShowCategories(!showCategories)} className="navleft hover:text-black flex flex-row items-center justify-evenly text-black bg-[#e7e6e7] h-10 w-16 rounded-l-md">
+                        <span className=" text-gray-600 ">All</span>
+                        <div>
+                            <div className="dropdown">
+                                <div className={`dropdown-content absolute z-20 bg-white text-black shadow-lg rounded-md mt-2 ${showCategories ? "block" : "hidden"}`}>
+                                    {categories.map((category) => (
+                                        <a key={category.id} href={category.url} className="block px-4 py-2 text-sm hover:bg-gray-100">
+                                            {category.name}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                         <SlArrowDown className="h-4 w-4 cursor-pointer" /></div>
                     <div className="searchbox h-10 md:w-[40vw] lg:w-[40vw] w-[70vw] m-auto lg:m-0 justify-start flex bg-blue-50 text-black "><input type="text" placeholder="Search" className="p-2 rounded-md md:w-[40vw] lg:w-[40vw] w-[70vw]" /></div>
                     <div className="searchicon ml-0.1 bg-[#ffbd69] rounded-r-md flex justify-center items-center h-10 md:w-8 lg:w-12  w-[12vw]"><FaSearch className=" rounded-r-md text-black text-2xl cursor-pointer" /></div>

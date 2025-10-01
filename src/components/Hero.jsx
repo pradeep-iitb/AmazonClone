@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react'
-import { images, laptops1, laptops2, laptops3, gadgets, mobilePhones, accessories, ledsAndTVs } from './constants/index.js'
+import { images, laptops1, laptops2, laptops3, gadgets, mobilePhones, accessories, ledsAndTVs } from '../constants/index.js'
 import { SlArrowLeft , SlArrowRight } from "react-icons/sl";
 import { gsap } from 'gsap';
+import { small_business_offers , essentials , articians } from '../constants/index.js';
 
 // Manual Scrolling Slider Component
 const ManualSlider = ({ title, data, seeMoreLink }) => {
@@ -22,7 +23,7 @@ const ManualSlider = ({ title, data, seeMoreLink }) => {
   };
 
   return (
-    <div className="w-full py-6 px-4 bg-white">
+    <div className="w-full py-6 px-4 bg-[#e3e6e6]">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-gray-900">{title}</h2>
@@ -204,13 +205,84 @@ const Hero = () => {
     </div>
 
     {/* Manual Scrolling Product Sliders */}
-    <div className="bg-gray-50 relative top-10 space-y-1">
+    <div className="bg-[#e3e6e7] relative top-10 space-y-1">
       {/* Gadgets & Electronics Slider */}
       <ManualSlider 
         title="Up to 70% off | Power up with the latest gadgets from stores nearby" 
         data={gadgets} 
         seeMoreLink="#"
       />
+
+    <div className= " laptop-sections w-full py-8 px-4 bg-transparent z-20">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        {/* First Laptop Section */}
+        <div className="laptop-section bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800">Up to 75% off | Collections from Small businesses</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {small_business_offers.map((laptop) => (
+              <div key={laptop.id} className="laptop-item">
+                <a href={laptop.a} target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={laptop.src} 
+                    alt={laptop.alt} 
+                    className="w-full h-24 object-contain rounded hover:scale-105 transition-transform duration-200"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+          <a href="#" className="text-blue-600 hover:text-blue-800 text-sm mt-4 block">See all deals</a>
+        </div>
+
+        {/* Second Laptop Section */}
+        <div className="laptop-section bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800">Upto 50% off | Home & Kitchen essentials</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {essentials.map((laptop) => (
+              <div key={laptop.id} className="laptop-item">
+                <a href={laptop.a} target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={laptop.src} 
+                    alt={laptop.alt} 
+                    className="w-full h-24 object-contain rounded hover:scale-105 transition-transform duration-200"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+          <a href="#" className="text-blue-600 hover:text-blue-800 text-sm mt-4 block">See all deals</a>
+        </div>
+
+        {/* Third Laptop Section */}
+        <div className="laptop-section bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800">Up to 80% off | Treasures from Indian artisans</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {articians.map((laptop) => (
+              <div key={laptop.id} className="laptop-item">
+                <a href={laptop.a} target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={laptop.src} 
+                    alt={laptop.alt} 
+                    className="w-full h-24 object-contain rounded hover:scale-105 transition-transform duration-200"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+          <a href="#" className="text-blue-600 hover:text-blue-800 text-sm mt-4 block">See all deals</a>
+        </div>
+                {/* Fourth Laptop Section */}
+        <div className="laptop-section bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800">Up to 70% off | International brands</h3>
+            <img src='https://images-eu.ssl-images-amazon.com/images/G/31/img19/OOC/Gateway/2025/BAUHALO/PC_CC_Asin_379x304._SY304_CB800689295_.jpg' alt='International Brands' className=" object-contain rounded hover:scale-105 transition-transform duration-200"/>
+            <h3 className="text-md font-semibold mt-2 text-gray-800">Narwal Robotic vacuum cleaner</h3>
+          <a href="#" className="text-blue-600 hover:text-blue-800 text-sm mt-4 block">See all deals</a>
+        </div>
+
+
+      </div>
+    </div>
 
       {/* Mobile Phones Slider */}
       <ManualSlider 
@@ -219,12 +291,6 @@ const Hero = () => {
         seeMoreLink="#"
       />
 
-      {/* Accessories Slider */}
-      <ManualSlider 
-        title="Premium Accessories | Apple & Tech Accessories" 
-        data={accessories} 
-        seeMoreLink="#"
-      />
 
       {/* LEDs & Smart TVs Slider */}
       <ManualSlider 
