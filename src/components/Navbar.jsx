@@ -5,12 +5,15 @@ import { IoMenu } from "react-icons/io5";
 import { SlArrowRight } from "react-icons/sl";
 import { FaUser } from "react-icons/fa";
 import info from "../constants/index.js";
-import { categories } from "../constants/index.js";
+import { categories, languages, signInData } from "../constants/index.js";
 import { useState } from "react";
 
 
 const Navbar = () => {
     const [showCategories, setShowCategories] = useState(false);
+    const [showLanguages, setShowLanguages] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState(languages[1]); // Default to Hindi
+    const [signIn, setSignIn] = useState(false);
 
     return (
         <>
@@ -49,19 +52,97 @@ const Navbar = () => {
                             </div>
                         </div>
                         <SlArrowDown className="h-4 w-4 cursor-pointer" /></div>
-                    <div className="searchbox h-10 md:w-[40vw] lg:w-[40vw] w-[70vw] m-auto lg:m-0 justify-start flex bg-blue-50 text-black "><input type="text" placeholder="Search" className="p-2 rounded-md md:w-[40vw] lg:w-[40vw] w-[70vw]" /></div>
+                    <div className="searchbox h-10 md:w-[40vw] lg:w-[40vw] w-[70vw] m-auto lg:m-0 justify-start flex bg-blue-50 text-black "><input type="text"  placeholder="Search" className="p-2 rounded-md md:w-[40vw] lg:w-[40vw] w-[70vw]" /></div>
                     <div className="searchicon ml-0.1 bg-[#ffbd69] rounded-r-md flex justify-center items-center h-10 md:w-8 lg:w-12  w-[12vw]"><FaSearch className=" rounded-r-md text-black text-2xl cursor-pointer" /></div>
                 </div>
             </div>
-                <div className="language hidden lg:flex flex-row  h-16 w-22 items-center justify-center rounded-md border border-transparent hover:border-white transition gap-1" >
+                <div className="language hidden lg:flex flex-row h-16 w-22 items-center justify-center rounded-md border border-transparent hover:border-white transition gap-1 relative" >
                     <img src='/assets/Images/7053.jpg' className='hidden lg:block h-6' />
-                    <span className=" text-[1rem] hidden lg:block font-bold ">HI</span>
-                    <SlArrowDown className="h-4 w-4 hidden lg:block text-white cursor-pointer" />
+                    <div className="relative">
+                        <div 
+                            onClick={() => setShowLanguages(!showLanguages)}
+                            className="flex items-center gap-1 cursor-pointer"
+                        >
+                            <span className="text-[1rem] hidden lg:block font-bold">{selectedLanguage.code}</span>
+                            <SlArrowDown className="h-4 w-4 hidden lg:block text-white cursor-pointer" />
+                        </div>
+                        <div className={`absolute top-full left-0 mt-2 bg-white text-black shadow-lg rounded-md py-2 min-w-[120px] z-50 ${showLanguages ? "block" : "hidden"}`}>
+                            {languages.map((language) => (
+                                <div 
+                                    key={language.id} 
+                                    onClick={() => {
+                                        setSelectedLanguage(language);
+                                        setShowLanguages(false);
+                                    }}
+                                    className="px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                                >
+                                    <span className="font-medium">{language.code}</span>
+                                    <span>{language.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
-                <div id="SignIn" className='hidden lg:flex flex-col w-35 rounded-md border h-16 border-transparent hover:border-white transition item-center justify-center'>
-                    <span className='text-[0.6rem] hidden lg:block h-auto'>Hello , sign in</span>
-                    <span className='text-[0.8rem] hidden lg:block font-bold h-auto '>Account & Lists</span>
+                <div id="SignIn" className='hidden lg:flex flex-col w-35 rounded-md border h-16 border-transparent hover:border-white transition item-center justify-center relative'>
+                    <div 
+                        onMouseEnter={() => setSignIn(true)} 
+                        onMouseLeave={() => setSignIn(false)}
+                        className="flex flex-col items-center justify-center h-full cursor-pointer"
+                    >
+                        <span className='text-[0.6rem] hidden lg:block h-auto'>Hello, sign in</span>
+                        <span className='text-[0.8rem] hidden lg:block font-bold h-auto'>Account & Lists</span>
+                    </div>
+                    
+                    <div 
+                        className={`absolute top-full right-0 mt-2 bg-white text-black shadow-2xl rounded-md py-4 px-6 min-w-[400px] z-50 transition-all duration-200 ${signIn ? "opacity-100 visible" : "opacity-0 invisible"}`}
+                        onMouseEnter={() => setSignIn(true)} 
+                        onMouseLeave={() => setSignIn(false)}
+                    >
+                        {/* Sign In Button */}
+                        <div className="text-center mb-4">
+                            <button className='bg-yellow-400 text-black px-20 py-2 rounded-md hover:bg-yellow-500 transition-colors duration-200 font-medium'>
+                                Sign in
+                            </button>
+                            <p className='text-sm text-gray-600 mt-2'>
+                                New customer? 
+                                <a href="https://www.amazon.in/ap/register" className='text-blue-600 hover:underline ml-1'>
+                                    Start here.
+                                </a>
+                            </p>
+                        </div>
+                        
+                        {/* Two Column Layout */}
+                        <div className="flex gap-8">
+                            {/* Your Lists */}
+                            <div className="flex-1">
+                                <h3 className="font-bold text-gray-900 mb-3">Your Lists</h3>
+                                <ul className="space-y-2">
+                                    {signInData.yourLists.map((item) => (
+                                        <li key={item.id}>
+                                            <a href={item.url} className="text-sm text-gray-700 hover:text-orange-600 hover:underline">
+                                                {item.title}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            
+                            {/* Your Account */}
+                            <div className="flex-1">
+                                <h3 className="font-bold text-gray-900 mb-3">Your Account</h3>
+                                <ul className="space-y-2">
+                                    {signInData.yourAccount.map((item) => (
+                                        <li key={item.id}>
+                                            <a href={item.url} className="text-sm text-gray-700 hover:text-orange-600 hover:underline">
+                                                {item.title}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="Orders" className='hidden lg:flex flex-col rounded-md h-16 w-25 items-center border border-transparent hover:border-white transition justify-center'>

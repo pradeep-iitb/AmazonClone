@@ -195,9 +195,40 @@ const categories = [
     { id: "cat8", name: "Toys", url: "#" }
 ];
 
+// Languages Data for Dropdown
+const languages = [
+    { id: "en", name: "English", code: "EN" },
+    { id: "hi", name: "हिन्दी", code: "HI" },
+    { id: "ta", name: "தமிழ்", code: "TA" },
+    { id: "te", name: "తెలుగు", code: "TE" },
+    { id: "kn", name: "ಕನ್ನಡ", code: "KN" },
+    { id: "bn", name: "বাংলা", code: "BN" }
+];
+
+// Sign In Dropdown Data
+const signInData = {
+    yourLists: [
+        { id: "create-list", title: "Create a List", url: "#" },
+        { id: "find-list", title: "Find a List or Registry", url: "#" }
+    ],
+    yourAccount: [
+        { id: "account", title: "Account", url: "#" },
+        { id: "orders", title: "Orders", url: "#" },
+        { id: "recommendations", title: "Recommendations", url: "#" },
+        { id: "browsing-history", title: "Browsing History", url: "#" },
+        { id: "watchlist", title: "Watchlist", url: "#" },
+        { id: "video-purchases", title: "Video Purchases & Rentals", url: "#" },
+        { id: "kindle", title: "Kindle Unlimited", url: "#" },
+        { id: "content-devices", title: "Content & Devices", url: "#" },
+        { id: "subscribe-save", title: "Subscribe & Save Items", url: "#" },
+        { id: "memberships", title: "Memberships & Subscriptions", url: "#" },
+        { id: "music-library", title: "Music Library", url: "#" }
+    ]
+};
+
 
 export { images, laptops1, laptops2, laptops3, gadgets, mobilePhones, accessories, ledsAndTVs, info };
 export { small_business_offers, essentials, articians };
 export { Get_to_Know_Us, Connect_with_Us, Make_Money_with_Us, Let_us_Help_You };
-export { categories };
+export { categories, languages, signInData };
 export default info;
